@@ -2,14 +2,7 @@
 
 A simple web application for booking hotels in Nepal, built for a college project.
 
-## Features
 
-- 🏔️ Browse hotels across Nepal with beautiful mountain views
-- 🔍 Search hotels by name or location
-- 📅 Book hotels with date selection and guest count
-- 📋 View booking history
-- 📱 Responsive design with Tailwind CSS
-- 🚀 Simple and clean user interface
 
 ## Tech Stack
 
@@ -65,7 +58,7 @@ hotel-nepal-booking/
 
 1. **Install PostgreSQL** and start the service
 
-2. **Create the database** using pgAdmin4 or psql:
+2. **Create the database** using pgAdmin4:
    ```sql
    CREATE DATABASE hotel_nepal;
    ```
@@ -144,16 +137,7 @@ hotel-nepal-booking/
 3. **Booking Form**: Select dates, number of guests, and complete booking
 4. **My Bookings**: View all your confirmed bookings
 
-## Sample Hotels Included
 
-- **Himalayan Grand Hotel** (Kathmandu) - $150/night
-- **Everest View Lodge** (Namche Bazaar) - $80/night
-- **Pokhara Lake Resort** (Pokhara) - $120/night
-- **Chitwan Jungle Lodge** (Chitwan National Park) - $95/night
-- **Bandipur Heritage Hotel** (Bandipur) - $75/night
-- **Gokyo Lake Lodge** (Gokyo Valley) - $60/night
-
-## Database Schema
 
 ### Hotels Table
 - id, name, location, description
@@ -166,23 +150,10 @@ hotel-nepal-booking/
 - number_of_guests, total_price, booking_status
 - created_at, updated_at
 
-## Notes
 
-- This is a simple college project demonstrating basic web development concepts
-- The application includes fallback data for demonstration purposes
-- Images are loaded from Unsplash for better visual appeal
-- The design uses Nepal's flag colors (blue and red) for branding
 
-## Future Enhancements
 
-- User authentication and accounts
-- Payment integration
-- Hotel reviews and ratings
-- Advanced search filters
-- Admin panel for hotel management
-- Email confirmations
-- Booking cancellation feature
 
-## License
 
-This project is created for educational purposes as a college project.
+With <3 from Pratyush
+
