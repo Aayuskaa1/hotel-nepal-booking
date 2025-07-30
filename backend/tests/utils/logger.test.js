@@ -1,0 +1,1 @@
+const logger = require("../../utils/logger"); describe("Logger", () => { test("should log messages", () => { expect(() => logger.info("test")).not.toThrow(); expect(() => logger.error("test")).not.toThrow(); }); });

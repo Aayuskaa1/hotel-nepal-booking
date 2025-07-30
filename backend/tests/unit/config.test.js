@@ -1,0 +1,1 @@
+const config = require("../../config"); describe("Config", () => { test("should load config", () => { expect(config.database).toBeDefined(); expect(config.jwt).toBeDefined(); expect(config.server).toBeDefined(); }); });
