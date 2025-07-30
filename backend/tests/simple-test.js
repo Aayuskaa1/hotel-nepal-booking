@@ -1,0 +1,1 @@
+console.log("🧪 Test Suite Ready!"); console.log("📁 Test files created:"); require("fs").readdirSync("tests/api").forEach(f => console.log("   ✅", f)); console.log("🎉 All test cases organized in tests/ folder!");
