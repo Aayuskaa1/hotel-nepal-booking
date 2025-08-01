@@ -141,7 +141,7 @@ hotel-nepal-booking/
 
 ### Hotels Table
 - id, name, location, description
-- price_per_night, rating, amenities
+- price_per_night, rating
 - image, created_at, updated_at
 
 ### Bookings Table

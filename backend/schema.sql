@@ -11,8 +11,27 @@ CREATE TABLE IF NOT EXISTS hotels (
     description TEXT,
     price_per_night DECIMAL(10, 2) NOT NULL,
     rating DECIMAL(2, 1) DEFAULT 0,
-    amenities TEXT,
     image VARCHAR(500),
+    address TEXT,
+    city VARCHAR(255),
+    postal_code VARCHAR(20),
+    phone VARCHAR(20),
+    email VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    city VARCHAR(255),
+    postal_code VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -21,6 +40,7 @@ CREATE TABLE IF NOT EXISTS hotels (
 CREATE TABLE IF NOT EXISTS bookings (
     id SERIAL PRIMARY KEY,
     hotel_id INTEGER REFERENCES hotels(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     guest_name VARCHAR(255) NOT NULL,
     guest_email VARCHAR(255) NOT NULL,
     guest_phone VARCHAR(20) NOT NULL,
@@ -34,18 +54,18 @@ CREATE TABLE IF NOT EXISTS bookings (
 );
 
 -- Insert sample hotels
-INSERT INTO hotels (name, location, description, price_per_night, rating, amenities, image) VALUES
-('Himalayan Grand Hotel', 'Kathmandu', 'Luxury 5-star hotel in the heart of Kathmandu with stunning views of the Himalayas. Features world-class amenities and traditional Nepalese hospitality.', 150.00, 4.5, 'WiFi,Pool,Spa,Restaurant,Room Service,Gym,Conference Room', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop'),
+INSERT INTO hotels (name, location, description, price_per_night, rating, image) VALUES
+('Himalayan Grand Hotel', 'Kathmandu', 'Luxury 5-star hotel in the heart of Kathmandu with stunning views of the Himalayas. Features world-class amenities and traditional Nepalese hospitality.', 150.00, 4.5, 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop'),
 
-('Everest View Lodge', 'Namche Bazaar', 'Perfect base camp for Everest trekkers. Offers panoramic views of Mount Everest and surrounding peaks. Cozy mountain lodge with all essential amenities.', 80.00, 4.2, 'WiFi,Restaurant,Heating,Mountain View,Trekking Guide', 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop'),
+('Everest View Lodge', 'Namche Bazaar', 'Perfect base camp for Everest trekkers. Offers panoramic views of Mount Everest and surrounding peaks. Cozy mountain lodge with all essential amenities.', 80.00, 4.2, 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop'),
 
-('Pokhara Lake Resort', 'Pokhara', 'Beautiful lakeside resort with stunning views of Phewa Lake and the Annapurna mountain range. Perfect for relaxation and adventure activities.', 120.00, 4.7, 'WiFi,Pool,Spa,Restaurant,Lake View,Boating,Paragliding', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop'),
+('Pokhara Lake Resort', 'Pokhara', 'Beautiful lakeside resort with stunning views of Phewa Lake and the Annapurna mountain range. Perfect for relaxation and adventure activities.', 120.00, 4.7, 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop'),
 
-('Chitwan Jungle Lodge', 'Chitwan National Park', 'Eco-friendly lodge in the heart of Chitwan National Park. Experience wildlife safaris and traditional Tharu culture in comfort.', 95.00, 4.3, 'WiFi,Restaurant,Safari Tours,Cultural Shows,Nature Walks', 'https://images.unsplash.com/photo-1520637836862-4d197d17c13a?w=800&h=600&fit=crop'),
+('Chitwan Jungle Lodge', 'Chitwan National Park', 'Eco-friendly lodge in the heart of Chitwan National Park. Experience wildlife safaris and traditional Tharu culture in comfort.', 95.00, 4.3, 'https://images.unsplash.com/photo-1520637836862-4d197d17c13a?w=800&h=600&fit=crop'),
 
-('Bandipur Heritage Hotel', 'Bandipur', 'Historic hotel in the medieval town of Bandipur. Experience traditional Newari architecture and culture with modern comfort.', 75.00, 4.1, 'WiFi,Restaurant,Heritage Tours,Mountain View,Cultural Experience', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop'),
+('Bandipur Heritage Hotel', 'Bandipur', 'Historic hotel in the medieval town of Bandipur. Experience traditional Newari architecture and culture with modern comfort.', 75.00, 4.1, 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop'),
 
-('Gokyo Lake Lodge', 'Gokyo Valley', 'High-altitude lodge near the famous Gokyo Lakes. Perfect for serious trekkers seeking adventure in the Everest region.', 60.00, 4.0, 'WiFi,Restaurant,Heating,Mountain View,Trekking Support', 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop');
+('Gokyo Lake Lodge', 'Gokyo Valley', 'High-altitude lodge near the famous Gokyo Lakes. Perfect for serious trekkers seeking adventure in the Everest region.', 60.00, 4.0, 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop');
 
 -- Create indexes for better performance
 CREATE INDEX idx_hotels_location ON hotels(location);

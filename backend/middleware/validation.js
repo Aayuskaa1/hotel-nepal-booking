@@ -43,7 +43,7 @@ const validateRegistration = (req, res, next) => {
 
 // Validation middleware for hotel creation/update
 const validateHotel = (req, res, next) => {
-  const { name, location, description, price_per_night, rating, amenities } = req.body;
+  const { name, location, description, price_per_night, rating } = req.body;
 
   // Check required fields
   if (!name || !location || !price_per_night) {
